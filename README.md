@@ -20,7 +20,6 @@ The application saves notes to local storage using AsyncStorage.
 
 ## Possible features
 * Redux
-* Context
 
 ## Instructions
 
