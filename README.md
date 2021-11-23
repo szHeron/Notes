@@ -19,7 +19,7 @@ The application saves notes to local storage using AsyncStorage.
 * react-navigation/stack
 
 ## Possible features
-* Redux
+- [ ] Redux
 
 ## Instructions
 
