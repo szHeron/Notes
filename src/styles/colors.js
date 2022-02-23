@@ -6,7 +6,7 @@ const COLORS = {
     headerButtons:'#000',
     addButton:'#ffc917',
     loading:'#0000ff',
-    searchBar:'#a0a0a0'
+    searchBar:'#d3d3d3'
 }
 
 export default COLORS;

@@ -4,8 +4,8 @@ import Colors from '../../styles/colors'
 const style = StyleSheet.create({
     conteiner:{
         flex:1,
-        backgroundColor:Colors.HomeBackground,
-        paddingHorizontal:20
+        paddingHorizontal:20,
+        paddingTop: 20
     },
     button:{
         zIndex:9,

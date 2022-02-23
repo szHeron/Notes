@@ -17,8 +17,9 @@ export default function Home({navigation}){
             setLoading(true);
             const getData = async () => {
                 try {
-                    let notes = await AsyncStorage.getItem('notes')
-                    if(notes[0] !== '['){
+                    let notes = await AsyncStorage.getItem('notes');
+                    console.log(notes)
+                    if(notes.length > 0 && notes[0] !== '['){
                         notes = '[',notes,']'
                     }
                     setData(JSON.parse(notes));
