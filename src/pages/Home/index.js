@@ -17,7 +17,11 @@ export default function Home({navigation}){
             setLoading(true);
             const getData = async () => {
                 try {
-                    setData(JSON.parse(await AsyncStorage.getItem('notes')));
+                    let notes = await AsyncStorage.getItem('notes')
+                    if(notes[0] !== '['){
+                        notes = '[',notes,']'
+                    }
+                    setData(JSON.parse(notes));
                     setLoading(false);
                 }catch(err){
                     console.log(err);
@@ -59,5 +63,3 @@ export default function Home({navigation}){
     }
     
 }
-
-
