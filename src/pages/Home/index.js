@@ -18,7 +18,9 @@ export default function Home({navigation}){
             const getData = async () => {
                 try {
                     let notes = await AsyncStorage.getItem('notes');
-                    notes = notes !== undefined && null ? notes : '[]';
+                    if(notes === undefined && notes === null){
+                        notes = '[]';
+                    }
                     if(notes.length > 0 && notes[0] !== '['){
                         notes = '[',notes,']';
                     }
