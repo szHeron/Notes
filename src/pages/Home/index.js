@@ -18,15 +18,15 @@ export default function Home({navigation}){
             const getData = async () => {
                 try {
                     let notes = await AsyncStorage.getItem('notes');
-                    notes = notes !== undefined?notes:'[]';
+                    notes = notes !== undefined && null ? notes : '[]';
                     if(notes.length > 0 && notes[0] !== '['){
-                        notes = '[',notes,']'
+                        notes = '[',notes,']';
                     }
                     setData(JSON.parse(notes));
                     setLoading(false);
                 }catch(err){
                     console.log(err);
-                    alert('Erro ao carregar anotações');
+                    alert('Error loading notes');
               }
             };
             getData();
@@ -61,6 +61,5 @@ export default function Home({navigation}){
                 </TouchableOpacity>
             </SafeAreaView>
         )
-    }
-    
+    }   
 }
