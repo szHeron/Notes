@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { SafeAreaView, FlatList, TouchableOpacity, Text, ActivityIndicator, View } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons'; 
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import SearchBar from '../../components/SearchBar'
-import Style from './styles'
-import Colors from '../../styles/colors'
-import Notes from '../../components/RenderNotes'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import SearchBar from '../../components/SearchBar';
+import Style from './styles';
+import Colors from '../../styles/colors';
+import Notes from '../../components/RenderNotes';
 
 export default function Home({navigation}){
     const [data,setData] = useState(null);
@@ -18,7 +18,7 @@ export default function Home({navigation}){
             const getData = async () => {
                 try {
                     let notes = await AsyncStorage.getItem('notes');
-                    console.log(notes)
+                    notes = notes !== undefined?notes:'[]';
                     if(notes.length > 0 && notes[0] !== '['){
                         notes = '[',notes,']'
                     }
