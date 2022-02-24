@@ -22,10 +22,10 @@ export default function Notes({route,navigation}){
             headerRight: () => {
                 return(
                     <View style={{flexDirection:'row', margin:20}}>
-                        <TouchableOpacity onPress={()=>{Save(note);}}>
+                        <TouchableOpacity onPress={()=>Save(note, navigation)}>
                             <Feather name="save" size={24} color="black" style={{paddingRight:30}}/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>Delete(note,navigation)}>
+                        <TouchableOpacity onPress={()=>Delete(note, navigation)}>
                             <Feather name="trash-2" size={24} color="black" />
                         </TouchableOpacity>
                     </View>

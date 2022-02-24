@@ -12,19 +12,19 @@ export default async function delNote(note,navigation){
                     style:'cancel'
                 }
             ]
-        )
+        );
     }else{
         try{
             let data = JSON.parse(await AsyncStorage.getItem('notes'))
             for(let i = 0; i < data.length; i++) {
                 if(data[i].id == note.id) {
-                    data.splice(i,1)
+                    data.splice(i,1);
                 }
             }
-            await AsyncStorage.setItem('notes',JSON.stringify(data))
-            navigation.goBack()
+            await AsyncStorage.setItem('notes',JSON.stringify(data));
+            navigation.goBack();
         }catch(err){
-            console.log(err)
+            console.log(err);
             Alert.alert(
                 'ERRO',
                 'Não foi possivel deletar o arquivo',
@@ -34,7 +34,7 @@ export default async function delNote(note,navigation){
                         style:'cancel'
                     }
                 ]
-            )
+            );
         }
     }
     

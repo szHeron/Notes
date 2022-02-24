@@ -2,19 +2,20 @@ import { Alert } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import updateNote from './updateNote';
 
-export default async function SaveNote(note){
+export default async function SaveNote(note, navigation){
     async function getKey(){
-        if(await AsyncStorage.getItem('0') == null){
+        const note = await AsyncStorage.getItem('0')
+        if(note === null){
             await AsyncStorage.setItem('0','1');
             return 1;
         }else{
-            const key = String(Number(await AsyncStorage.getItem('0')) + 1);
+            const key = String(Number(note) + 1);
             await AsyncStorage.setItem('0',key);
             return key;
         }
     }
 
-    if(note.note==''||note.title==''){
+    if(note.note === '' || note.title === ''){
         Alert.alert(
             'ERRO',
             'Preencha todos os campos!',
@@ -27,7 +28,7 @@ export default async function SaveNote(note){
         )
     }else{
         try{
-            let data = []
+            let data = [];
             if(note.id){
                 if(Array.isArray(JSON.parse(await AsyncStorage.getItem('notes')))){
                     data = JSON.parse(await AsyncStorage.getItem('notes'));
@@ -50,6 +51,7 @@ export default async function SaveNote(note){
                     await AsyncStorage.setItem('notes',JSON.stringify(data));
                 }
             }
+            navigation.goBack();
         }catch(err){
             console.log(err);
             Alert.alert(
