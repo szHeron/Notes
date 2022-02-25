@@ -58,7 +58,7 @@ export default function Home({navigation}){
                         )
                     }}
                 />
-                <TouchableOpacity style={Style.button} onPress={()=>navigation.navigate('Notes',{search:false})}>
+                <TouchableOpacity style={Style.newNoteButton} onPress={()=>navigation.navigate('Notes',{search:false})}>
                     <AntDesign name="pluscircle" size={50} color={Colors.addButton}/>
                 </TouchableOpacity>
             </SafeAreaView>
