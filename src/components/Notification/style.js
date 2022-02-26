@@ -2,12 +2,11 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   modalView: {
-    margin: 40,
-    marginTop: '60%',
+    marginTop: '100%',
     backgroundColor: '#fff',
     borderRadius: 20,
     padding: 35,
-    height: '50%',
+    height: '60%',
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
