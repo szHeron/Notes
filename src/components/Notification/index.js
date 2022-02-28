@@ -1,116 +1,16 @@
-import React from "react";
-import { Modal, Text, TouchableOpacity, View, FlatList } from "react-native";
+import React, {useState} from "react";
+import { Modal, Text, TouchableOpacity, View } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
-import RenderDate from '../RenderDate'
 import Style from "./style";
 
-const days = [
-    {
-        id: 1,
-        name: 'Seg',
-        select: true
-    },
-    {
-        id: 2,
-        name: 'Ter',
-        select: false
-    },
-    {
-        id: 3,
-        name: 'Qua',
-        select: false
-    },
-    {
-        id: 4,
-        name: 'Qui',
-        select: false
-    },
-    {
-        id: 5,
-        name: 'Sex',
-        select: false
-    },
-    {
-        id: 6,
-        name: 'Sab',
-        select: false
-    },
-    {
-        id: 7,
-        name: 'Dom',
-        select: false
-    }
-]
-
-const months = [
-    {
-        id: 1,
-        name: 'Jan',
-        select: true
-    },
-    {
-        id: 2,
-        name: 'Fev',
-        select: false
-    },
-    {
-        id: 3,
-        name: 'Mar',
-        select: false
-    },
-    {
-        id: 4,
-        name: 'Abr',
-        select: false
-    },
-    {
-        id: 5,
-        name: 'Mai',
-        select: false
-    },
-    {
-        id: 6,
-        name: 'Jun',
-        select: false
-    },
-    {
-        id: 7,
-        name: 'Jul',
-        select: false
-    },
-    {
-        id: 8,
-        name: 'Ago',
-        select: false
-    },
-    {
-        id: 9,
-        name: 'Set',
-        select: false
-    },
-    {
-        id: 10,
-        name: 'Out',
-        select: false
-    },
-    {
-        id: 11,
-        name: 'Nov',
-        select: false
-    },
-    {
-        id: 12,
-        name: 'Dez',
-        select: false
-    }
-]
-
 const ModalNotification = ({modalVisible, setModalVisible, date, setDate}) => {
+    const [showPicker, setShowPicker] = useState({showDate: false, showHours: false});
+    
     const onChange = (event, selectedDate) => {
+        setShowPicker({showDate: false, showHours: false});
         const currentDate = selectedDate || date;
         setDate(currentDate);
-        setMode('time');
-    }
+      };
 
     const currentFormattedData = (type) => {
         const day = date.getDate().toString().padStart(2, '0');
@@ -137,45 +37,30 @@ const ModalNotification = ({modalVisible, setModalVisible, date, setDate}) => {
             <View style={Style.centeredView}>
                 <View style={Style.modalView}>
                     <Text style={Style.modalText}>Marque o horario do lembrete</Text>
-                    <View style={{height: '75%'}}>
-                        <Text>Dias</Text>
-                        <FlatList
-                            data={days}
-                            numColumns={1}
-                            keyExtractor={(item)=>item.id.toString()}
-                            horizontal
-                            renderItem={({item})=>{
-                                return(
-                                    <RenderDate item={item}/>
-                                )
-                            }}
-                        />
-                        <Text>Mêses</Text>
-                        <FlatList
-                            data={months}
-                            numColumns={1}
-                            keyExtractor={(item)=>item.id.toString()}
-                            horizontal
-                            renderItem={({item})=>{
-                                return(
-                                    <RenderDate item={item}/>
-                                )
-                            }}
-                        />
+                    <View style={{height:'60%'}}>
+                        <Text>Data</Text>
+                        <TouchableOpacity style={Style.buttonHours} onPress={()=>setShowPicker({...showPicker, showDate: true})}>
+                            <Text style={Style.txtHours}>{currentFormattedData('date')}</Text>
+                        </TouchableOpacity>
+                        {showPicker.showDate&&<DateTimePicker mode='date' value={date} onChange={onChange}/>}
                         <Text>Horario</Text>
+                        <TouchableOpacity style={Style.buttonHours} onPress={()=>setShowPicker({...showPicker, showHours: true})}>
+                            <Text style={Style.txtHours}>{currentFormattedData('hours')}</Text>
+                        </TouchableOpacity>
+                        {showPicker.showHours&&<DateTimePicker mode='time' value={date} onChange={onChange}/>}
                     </View>
                     <View style={Style.modalButtons}>
                         <TouchableOpacity
                             style={[Style.button, Style.buttonSave]}
                             onPress={() => setModalVisible(!modalVisible)}
                         >
-                            <Text style={Style.textStyle}>Salvar</Text>
+                            <Text style={Style.txtStyle}>Salvar</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={[Style.button, Style.buttonCancel]}
                             onPress={() => setModalVisible(!modalVisible)}
                         >
-                            <Text style={Style.textStyle}>Cancelar</Text>
+                            <Text style={Style.txtStyle}>Cancelar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

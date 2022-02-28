@@ -42,9 +42,22 @@ const styles = StyleSheet.create({
   buttonSave:{
     backgroundColor: '#2196F3',
   },
-  textStyle: {
+  txtStyle: {
     fontWeight: 'bold',
     color: '#fff'
+  },
+  buttonHours: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    borderBottomColor: '#000',
+    borderBottomWidth: 1,
+    width: 150,
+    marginBottom: 10
+  },
+  txtHours:{
+    fontWeight: 'bold',
+    color: '#000',
+    fontSize: 25
   }
 });
 
