@@ -22,7 +22,7 @@ export default function Home({navigation}){
                         notes = '[]';
                     }
                     if(notes.length > 0 && notes[0] !== '['){
-                        notes = '[',notes,']';
+                        notes = `[${notes}]`;
                     }
                     setData(JSON.parse(notes));
                     setLoading(false);

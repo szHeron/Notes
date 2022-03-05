@@ -11,7 +11,8 @@ export default function Notes({route,navigation}){
     const [note,setNote] = useState({
         title:'',
         note:'',
-        date: date
+        date: date,
+        notificationId: null
     });
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -61,7 +62,7 @@ export default function Notes({route,navigation}){
                     >
                 </TextInput>
             </ScrollView>
-            <ModalNotification modalVisible={modalVisible} setModalVisible={setModalVisible} date={date} setDate={setDate}/>
+            <ModalNotification modalVisible={modalVisible} setModalVisible={setModalVisible} date={date} setDate={setDate} note={note} setNote={setNote}/>
         </SafeAreaView>
     )
 }

@@ -1,16 +1,38 @@
 import React, {useState} from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import * as Notifications from 'expo-notifications';
 import Style from "./style";
 
-const ModalNotification = ({modalVisible, setModalVisible, date, setDate}) => {
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+    }),
+});
+
+const ModalNotification = ({modalVisible, setModalVisible, date, setDate, note, setNote}) => {
     const [showPicker, setShowPicker] = useState({showDate: false, showHours: false});
+
+    async function schedulePushNotification() {
+        const id = await Notifications.scheduleNotificationAsync({
+            content: {
+                title: `Lembrete: ${note.title.substr(0, 40)}`,
+                body: note.note.substr(0, 50),
+            },
+            trigger: { 
+                date: date
+            },
+        });
+        setNote({...note, notificationId: id})
+    }
     
     const onChange = (event, selectedDate) => {
         setShowPicker({showDate: false, showHours: false});
         const currentDate = selectedDate || date;
         setDate(currentDate);
-      };
+    };
 
     const currentFormattedData = (type) => {
         const day = date.getDate().toString().padStart(2, '0');
@@ -52,7 +74,7 @@ const ModalNotification = ({modalVisible, setModalVisible, date, setDate}) => {
                     <View style={Style.modalButtons}>
                         <TouchableOpacity
                             style={[Style.button, Style.buttonSave]}
-                            onPress={() => setModalVisible(!modalVisible)}
+                            onPress={() => {schedulePushNotification();setModalVisible(!modalVisible);}}
                         >
                             <Text style={Style.txtStyle}>Salvar</Text>
                         </TouchableOpacity>
@@ -70,14 +92,3 @@ const ModalNotification = ({modalVisible, setModalVisible, date, setDate}) => {
 };
 
 export default ModalNotification;
-
-/*
-<DateTimePicker
-                        testID="dateTimePicker"
-                        value={date}
-                        mode={mode}
-                        is24Hour={true}
-                        display="default"
-                        onChange={onChange}
-                    />
-*/

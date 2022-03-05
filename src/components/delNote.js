@@ -1,8 +1,9 @@
-import { Alert } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Notifications from 'expo-notifications';
 
 export default async function delNote(note,navigation){
-    if(note.id==undefined){
+    if(note.id === undefined){
         Alert.alert(
             'ERRO',
             'Anotação ainda não foi criada',
@@ -17,11 +18,14 @@ export default async function delNote(note,navigation){
         try{
             let data = JSON.parse(await AsyncStorage.getItem('notes'))
             for(let i = 0; i < data.length; i++) {
-                if(data[i].id == note.id) {
+                if(data[i].id === note.id) {
                     data.splice(i,1);
                 }
             }
-            await AsyncStorage.setItem('notes',JSON.stringify(data));
+            if(note.notificationId !== null){
+                await Notifications.cancelScheduledNotificationAsync(note.notificationId);
+            }
+            await AsyncStorage.setItem('notes', JSON.stringify(data));
             navigation.goBack();
         }catch(err){
             console.log(err);
