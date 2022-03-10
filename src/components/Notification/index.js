@@ -59,13 +59,13 @@ const ModalNotification = ({modalVisible, setModalVisible, date, setDate, note, 
             <View style={Style.centeredView}>
                 <View style={Style.modalView}>
                     <Text style={Style.modalText}>Marque o horario do lembrete</Text>
-                    <View style={{height:'60%'}}>
-                        <Text>Data</Text>
+                    <View>
+                        <Text style={{textAlign: 'center'}}>Data</Text>
                         <TouchableOpacity style={Style.buttonHours} onPress={()=>setShowPicker({...showPicker, showDate: true})}>
                             <Text style={Style.txtHours}>{currentFormattedData('date')}</Text>
                         </TouchableOpacity>
                         {showPicker.showDate&&<DateTimePicker mode='date' value={date} onChange={onChange}/>}
-                        <Text>Horario</Text>
+                        <Text style={{textAlign: 'center'}}>Horario</Text>
                         <TouchableOpacity style={Style.buttonHours} onPress={()=>setShowPicker({...showPicker, showHours: true})}>
                             <Text style={Style.txtHours}>{currentFormattedData('hours')}</Text>
                         </TouchableOpacity>
