@@ -1,34 +1,48 @@
-# Notes
+<div align="center">
+  <h1> Notes </h1>
+</div>
+
+## 🧪 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+- [ReactNative](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+
+## 🚀 Como executar
+
+Clone o projeto e acesse a pasta do mesmo.
+
+```bash
+$ git clone https://github.com/szHeron/Notes.git
+$ cd Notes
+```
+
+Para iniciá-lo, siga os passos abaixo:
+```bash
+# Instalar as dependências
+$ yarn ou npm install
+
+# Iniciar o projeto
+$ expo start
+```
+O app pode ser acessado pelo o aplicativo do expo ao ler o qrcode
+
+## 💻 Projeto
+
 Simple note-taking app, based on the CRUD concept, made in react-native with expo.
 
 The application saves notes to local storage using AsyncStorage.
 
-## Demo
-### Create
-![alt text](https://s3.gifyu.com/images/ezgif-2-7657c908943f.gif "Create")
-### Read and SearchBar
-![alt text](https://s3.gifyu.com/images/ezgif-2-0488a0a8dafc.gif "Read and SearchBar")
-### Update
-![alt text](https://s3.gifyu.com/images/ezgif-2-58d8aceb9fcc.gif "Update")
-### Delete
-![alt text](https://s3.gifyu.com/images/ezgif-2-00fef47e9573.gif "Delete")
+## 🌟 Features
 
-## Dependencies and Libraries
-* Expo
-* react-native-async-storage/async-storage
-* react-navigation/stack
+- [x] Asyncstorage.
 
-## Possible features
-- [ ] Redux
+- [x] Notification.
 
-## Instructions
+- [x] SearchBar.
 
-After you have cloned the repository and install the dependencies locally
+## 📝 License
 
-Start you metro server
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-```
-expo start
-```
-
-After this step, you should be able to open the project in your iOS or Android device or simulator
+---
