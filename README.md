@@ -1,6 +1,14 @@
 <div align="center">
-  <h1> Notes </h1>
+    <h1> Notes </h1>
 </div>
+
+<div align="center">
+    <img src="https://i.ibb.co/gTFgtdK/create-read-update-e-delete.gif" alt="CRUD"/>
+    <img width="160px" height="340px" src="https://i.ibb.co/jTJM8Hh/notificaation.gif" alt="Notification"/>
+    <img src="https://i.ibb.co/x2KQmkM/searchbar.gif" alt="Searchbar"/>
+</div>
+
+                                             CRUD              NOTIFICATION            SEARCHBAR 
 
 ## 🧪 Tecnologias
 
