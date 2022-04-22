@@ -8,7 +8,7 @@
     <img src="https://i.ibb.co/x2KQmkM/searchbar.gif" alt="Searchbar"/>
 </div>
 
-                                   CRUD              NOTIFICATION            SEARCHBAR 
+                               CRUD              NOTIFICATION            SEARCHBAR 
 
 ## 🧪 Tecnologias
 
